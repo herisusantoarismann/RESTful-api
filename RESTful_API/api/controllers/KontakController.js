@@ -18,7 +18,7 @@ exports.index_get = function (req, res) {
   }
 };
 
-exports.post = function (req, res) {
+exports.index_post = function (req, res) {
   var new_Telepon = new Telepon(req.body);
   new_Telepon.save(function (err, Telepon) {
     if (err) res.send(err);
@@ -27,6 +27,7 @@ exports.post = function (req, res) {
 };
 
 exports.index_put = function (req, res) {
+  console.log("Masuk");
   Telepon.findOneAndUpdate(
     { _id: req.params.id },
     req.body,

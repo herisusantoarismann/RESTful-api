@@ -2,7 +2,7 @@ var express = require("express"),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require("mongoose"),
-  Telepon = require("./api/models/todoListModel"), //created model loading here
+  Telepon = require("./api/models/KontakModel"), //created model loading here
   bodyParser = require("body-parser");
 
 // mongoose instance connection url connection
@@ -12,7 +12,7 @@ mongoose.connect("mongodb://localhost/kontak");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require("./api/routes/todoListRoutes"); //importing route
+var routes = require("./api/routes/KontakRoutes"); //importing route
 routes(app); //register the route
 
 app.listen(port);
