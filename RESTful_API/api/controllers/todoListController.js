@@ -3,7 +3,7 @@
 var mongoose = require("mongoose"),
   Telepon = mongoose.model("Telepon");
 
-exports.list = function (req, res) {
+exports.index_get = function (req, res) {
   var nama = req.query.nama;
   if (nama === undefined) {
     Telepon.find({}, function (err, Telepon) {
@@ -18,15 +18,15 @@ exports.list = function (req, res) {
   }
 };
 
-exports.create = function (req, res) {
-  var new_task = new Telepon(req.body);
-  new_task.save(function (err, task) {
+exports.post = function (req, res) {
+  var new_Telepon = new Telepon(req.body);
+  new_Telepon.save(function (err, Telepon) {
     if (err) res.send(err);
-    res.json(task);
+    res.json(Telepon);
   });
 };
 
-exports.update = function (req, res) {
+exports.index_put = function (req, res) {
   Telepon.findOneAndUpdate(
     { _id: req.params.id },
     req.body,
@@ -38,14 +38,14 @@ exports.update = function (req, res) {
   );
 };
 
-exports.delete = function (req, res) {
+exports.index_delete = function (req, res) {
   Telepon.remove(
     {
       _id: req.params.id,
     },
     function (err, Telepon) {
       if (err) res.send(err);
-      res.json({ message: "Task successfully deleted" });
+      res.json({ message: "Contact successfully deleted" });
     }
   );
 };
